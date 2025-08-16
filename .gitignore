@@ -1,0 +1,10 @@
+.env
+env
+.pytest_cache
+tests/.pytest_cache
+tests/reports
+venv/
+.idea
+pages/__pycache__/
+tests/__pycache__/
+data/__pycache__/
