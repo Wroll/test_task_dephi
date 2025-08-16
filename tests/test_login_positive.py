@@ -117,6 +117,7 @@ def test_restore_email(setup_teardown, get_context):
 
     # Delete the latest email with the verification code
     # TODO delete the last email could be realized in teardown using SMTP
+    #  for the cases when test fails in the middle
     gmail_page.delete_last_email()
     expect(gmail_page.email).not_to_be_visible()
     gmail_page.page.close()
