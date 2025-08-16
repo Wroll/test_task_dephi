@@ -4,7 +4,7 @@ Negative automation tests for Login Form
 import pytest
 
 from data.data import InvalidData, ErrorMessages as ErrMsg, UserData
-from data.enum_data import ErrorMessageOption as Option
+from data.enum_data import InputField as Option
 
 
 @pytest.mark.login_form
@@ -29,7 +29,7 @@ def test_invalid_email(setup_teardown, input_data, err_msg):
     login_page.next_button.click()
 
     # Validate error message
-    login_page.validate_error_message_by_option(Option.EMAIL, err_msg)
+    login_page.validate_error_message_by_input_field(Option.EMAIL, err_msg)
 
 
 @pytest.mark.login_form
@@ -59,4 +59,4 @@ def test_invalid_password(setup_teardown, input_data, err_msg):
     login_page.next_button.click()
 
     # Validate error message
-    login_page.validate_error_message_by_option(Option.PASSWORD, err_msg)
+    login_page.validate_error_message_by_input_field(Option.PASSWORD, err_msg)

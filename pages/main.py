@@ -38,7 +38,7 @@ class Main:
         """
         return self.page.locator(self.LOCATORS["main_page"])
 
-    def go_to_login_page(self):
+    def go_to_login_form(self):
         self.page.goto(MAIN_PAGE_URL)
         expect(self.main_page).to_be_visible()
 

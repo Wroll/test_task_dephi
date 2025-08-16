@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class ErrorMessageOption(str, Enum):
+class InputField(str, Enum):
     EMAIL = "EMAIL"
     PASSWORD = "PASSWORD"
 

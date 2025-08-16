@@ -8,3 +8,5 @@ venv/
 pages/__pycache__/
 tests/__pycache__/
 data/__pycache__/
+report.html
+assets

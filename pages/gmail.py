@@ -12,7 +12,7 @@ class Gmail:
     LOCATORS = {
         "email": "xpath=//div[@class='UI']//tr",
         "code": "xpath=(//strong)[1]",
-        "more_actions": "xpath=//div[@aria-label='More message options']",
+        "more_actions": "xpath=(//div[@aria-label='More message options'])[1]",
         "delete_msg_action": "xpath=//div[@id='tm']",
     }
 

@@ -26,5 +26,5 @@ def setup_teardown(get_context):
 
     google_account_page = Main(page)
 
-    login_page = google_account_page.go_to_login_page()
+    login_page = google_account_page.go_to_login_form()
     yield login_page

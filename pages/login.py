@@ -2,7 +2,7 @@
 Module to holding functionalities for Login Form page
 """
 from data.data import InvalidOptionException, UserData
-from data.enum_data import ErrorMessageOption
+from data.enum_data import InputField
 from pages.main import Page, Locator
 from playwright.sync_api import expect
 from typing import Any
@@ -25,7 +25,6 @@ class Login:
         "forgot_email_button": {"role": "button",
                                 "name": "Forgot email?"},
         "name": "xpath=//input[@name='firstName']",
-
         "send_ver_code_button": {"role": "button",
                                  "name": "Send"},
         "get_ver_code_msg": "xpath=//span[contains(text(),"
@@ -169,8 +168,22 @@ class Login:
         """
         return self.page.locator(self.LOCATORS["language_combobox"])
 
-    def validate_error_message_by_option(self, option: ErrorMessageOption,
-                                         err_msg: str) -> Any:
+    def sign_in(self, email, password) -> None:
+        """
+        Method to sign in on the Login Form
+
+        :param email: user email
+        :param password: password
+        :return:
+        """
+        self.email_field.fill(email)
+        self.next_button.click()
+
+        self.password_field.fill(password)
+        self.next_button.click()
+
+    def validate_error_message_by_input_field(self, option: InputField,
+                                              err_msg: str) -> Any:
         """
         Method to click click next button depends on option
         if option is EMAIL then EMAIL argument should be provided

@@ -25,13 +25,7 @@ def test_email_valid_credentials(setup_teardown, input_data):
     """
     login_page = setup_teardown
 
-    # Fill email into email input
-    login_page.email_field.fill(input_data)
-    login_page.next_button.click()
-
-    # Fill password into password input
-    login_page.password_field.fill(UserData.VALID_PASSWORD)
-    login_page.next_button.click()
+    login_page.sign_in(UserData.VALID_EMAIL, UserData.VALID_PASSWORD)
 
     # Validate if gmail page presented
     expect(login_page.gmail_page).to_be_visible(timeout=10000)
@@ -105,15 +99,10 @@ def test_restore_email(setup_teardown, get_context):
     google_account_page = Main(page_2)
 
     # Go to Gmail Login Form
-    reserved_email: Login = google_account_page.go_to_login_page()
+    reserved_email: Login = google_account_page.go_to_login_form()
 
-    # Fill email into email input
-    reserved_email.email_field.fill(UserData.RESERVED_EMAIL)
-    reserved_email.next_button.click()
-
-    # Fill password into password input
-    reserved_email.password_field.fill(UserData.VALID_PASSWORD)
-    reserved_email.next_button.click()
+    # # Fill email into email input
+    reserved_email.sign_in(UserData.RESERVED_EMAIL, UserData.VALID_PASSWORD)
 
     # Validate if gmail page presented
     expect(reserved_email.gmail_page).to_be_visible(timeout=10000)
@@ -127,6 +116,7 @@ def test_restore_email(setup_teardown, get_context):
     verification_code = gmail_page.code.text_content()
 
     # Delete the latest email with the verification code
+    # TODO delete the last email could be realized in teardown using SMTP
     gmail_page.delete_last_email()
     expect(gmail_page.email).not_to_be_visible()
     gmail_page.page.close()
